@@ -27,6 +27,16 @@ io.on("connection", async socket => {
   
   const roomData = await Room.getRoom(room);
   Room.sendJoinedData(roomData, socket);
+
+  // Socket.io Events
+  socket.on("connect_second", msg => {
+    Player.sendDataToSecondPlayer(socket, msg);
+  });
+
+  socket.on("update_game", async msg => {
+    Room.updateGame(socket, msg);
+  });
+  
 });
 
 server.listen(7811, () => {
