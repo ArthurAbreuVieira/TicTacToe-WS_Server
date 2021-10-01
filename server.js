@@ -4,7 +4,7 @@ const socket = require('socket.io');
 
 require('./src/database');
 
-
+const Room = require('./src/service/RoomService');
 const Player = require('./src/service/PlayerService');
 
 const app = express();
