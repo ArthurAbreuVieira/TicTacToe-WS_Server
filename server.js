@@ -4,6 +4,9 @@ const socket = require('socket.io');
 
 require('./src/database');
 
+
+const Player = require('./src/service/PlayerService');
+
 const app = express();
 const server = http.createServer(app);
 const io = socket(server, {
