@@ -2,6 +2,8 @@ const express = require('express');
 const http = require('http');
 const socket = require('socket.io');
 
+require('./src/database');
+
 const app = express();
 const server = http.createServer(app);
 const io = socket(server, {
