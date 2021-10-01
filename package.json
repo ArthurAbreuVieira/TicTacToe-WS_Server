@@ -1,0 +1,21 @@
+{
+  "name": "tictactoe-websocketserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Arthur Abreu Vieira",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mariadb": "^2.5.4",
+    "mysql2": "^2.3.0",
+    "sequelize": "^6.6.5",
+    "socket.io": "^4.2.0"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.2.0"
+  }
+}
