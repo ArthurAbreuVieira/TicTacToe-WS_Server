@@ -18,6 +18,15 @@ const io = socket(server, {
 
 io.on("connection", async socket => {
   console.log(`New player ${socket.id} has been connected!`);
+
+  Player.createPlayer(socket.id);
+  room = await Room.insertInRoom(socket.id);
+
+  if(room === undefined) 
+    room = await Room.createRoom(socket.id);
+  
+  const roomData = await Room.getRoom(room);
+  Room.sendJoinedData(roomData, socket);
 });
 
 server.listen(7811, () => {
