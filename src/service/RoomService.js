@@ -90,7 +90,25 @@ class RoomService {
       socket.to(msg.to).emit("update_game", msg.data);
     }
   }
+
+  static async getAll() {
+    const rooms = await Room.findAll();
+    return rooms;
+  }
   
+  static async resetRoom(id) {
+    const room = await Room.findByPk(id);
+    room.data.player1.conn = '';
+    room.data.player2.conn = '';
+    room.data.turn = '';
+    await room.save();
+  }
+
+  static async deleteRoom(id) {
+    const room = await this.getRoom(id);
+    await room.destroy();
+  }
+
 }
 
 module.exports = RoomService;

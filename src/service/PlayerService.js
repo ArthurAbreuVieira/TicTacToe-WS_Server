@@ -8,6 +8,20 @@ class PlayerService {
     });
   }
 
+  static async getPlayer(connId) {
+    const player = await Player.findOne({
+      where: {
+        connId
+      }
+    });
+    return player;
+  }
+
+  static async deletePlayer(conn) {
+    const player = await this.getPlayer(conn);
+    player.destroy();
+  }
+
   static async sendDataToSecondPlayer(socket, msg) {
     if(msg.sender === socket.id) {
       socket.to(msg.opponent).emit("join", {
